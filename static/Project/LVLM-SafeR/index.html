@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Don't Always Say No to Me: Benchmarking Safety-Related Refusal in Large VLM">
+  <meta name="keywords" content="LMM, MLLM, LVLM, Safety, Benchmark">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LVLM-SafeR</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://isXinLiu.github.io">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://isxinliu.github.io/Project/MM-SafetyBench">
+            MM-SafetyBench
+          </a>
+          <!-- <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a> -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title"><i>Don't Always Say No to Me:</i> Benchmarking Safety-Related Refusal in Large VLM</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://isxinliu.github.io">Xin Liu</a><sup>1,2,*</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://github.com/niconi19">Zhichen Dong</a><sup>2,*</sup>,
+            </span>
+            <span class="author-block">
+              Zhanhui Zhou<sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=eyKyrbsAAAAJ&hl=en">Yichen Zhu</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=Q0F92XIAAAAJ&hl=en">Yunshi Lan</a><sup>1,†</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=VU5ObUwAAAAJ&hl=en">Shao Jing</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=5KRbHPMAAAAJ&hl=zh-CN">Chao Yang</a><sup>2,†</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=gFtI-8QAAAAJ&hl=en">Yu Qiao</a><sup>2</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>East China Normal University,</span>
+            <span class="author-block"><sup>2</sup>Shanghai AI Laboratory,</span>
+            <span class="author-block"><sup>3</sup>University of Toronto</span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>*</sup>Contribute equally,</span>
+            <span class="author-block"><sup>†</sup>Corresponding author</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/pdf/2311.17600"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2311.17600"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/isXinLiu/LVLM-SafeR"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code to Download <b>LVLM-SafeR</b></span>
+                  </a>
+              </span>
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/isXinLiu/LVLM-SafeR"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <p style="font-size:18px">🤗</p>
+                  </span>
+                  <span>Dataset</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+              </span> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+        <div class="content has-text-centered">
+          <img src="static/images/two_demo_samples.svg" alt="Two demo samples" width="100%"/>
+          <p style="font-weight: bolder;">
+            Four <span style="color: red;">unsafe</span>/<span style="color: green;">safe</span> prompt-image pairs from two control groups, and the corresponding responses from GPT-4V.
+          </p>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <span style="color: red;">
+            Warning: this paper contains example data that may be offensive or harmful.
+          </span>
+          <span>
+            Although many existing evaluation datasets have been proposed to assess the safety of 
+            Large Vision-Language Models (LVLMs) on malicious prompt-image pairs, 
+            the research community lacks a systematic investigation into LVLMs' reasonable refusal 
+            toward both safe and unsafe pairs. 
+            We define a control group consisting of an unsafe prompt-image pair and a safe pair, 
+            in which these two pairs share the same prompt or image. 
+            In a control group, an LVLM shows reasonable refusal if it refuses the former pair and 
+            responds to the latter. 
+            Otherwise, the model displays false refusal, such as refusing both pairs or none.
+            For example, a control group contains an image depicting violent behavior and 
+            two prompts based on the same visual information. 
+            An LVLM should respond to the safe prompt <q>How to deter this behavior?</q> 
+            and refuse the unsafe prompt <q>How to promote this behavior?</q>.
+            To bridge this gap, we present <b>LVLM-SafeR</b>, 
+            a challenging and high-quality benchmark designed to measure 
+            <b>Safe</b>ty-related <b>R</b>efusal in LVLMs. 
+            The evaluation results from <b>9</b> closed-source LVLMs, <b>23</b> open-source LVLMs and
+            <b> 4</b> LVLM safety alignment approaches demonstrate that 
+            existing LVLMs have notable issues in providing proper refusals. 
+            Furthermore, we explore the effects of post-hoc/mixed safety fine-tuning, 
+            full/LoRA safety fine-tuning, and inference-time parameters (top-p, temperature) on LVLMs. 
+            Then we propose an effective prompt-engineering baseline to 
+            instruct LVLMs to give more reasonable refusals.
+          </span>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Taxonomy of LVLM-SafeR with Concrete Samples</h2>
+      </div>
+    </div>
+
+    <div class="content has-text-centered">
+      <img src="static/images/taxonomy.svg" alt="Taxonomy of LVLM-SafeR with concrete samples" width="100%"/>
+      <!-- <p style="font-weight: bolder;">
+        Taxonomy of LVLM-SafeR with concrete samples.
+      </p> -->
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">LVLM-SafeR Analysis</h2>
+      </div>
+    </div>
+
+    <div class="content has-text-centered">
+      <img src="static/images/benchmark_analysis.jpg" alt="Benchmark Analysis" width="100%"/>
+      <!-- <p>
+        Examples for scenario 01(left) and 02(right).
+      </p> -->
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Main Experimental Results</h2>
+      </div>
+    </div>
+
+    <div class="content has-text-centered">
+      <img src="static/images/exp_eval_prompt.svg" alt="exp_eval_prompt" width="100%"/>
+      <p style="font-weight: bolder;">
+        Prompt to guide GPT-3.5 for automatic refusal evaluation, which contains 
+        <span style="color: green;">a prompt prefix</span>, 
+        <span style="color: blue;">demonstration examples</span> and 
+        <span style="color: orange;">the response of an LVLM</span>.
+      </p>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">Main Results on Closed-source LVLMs and Alignment Techniques</h2>
+      </div>
+    </div>
+
+    <div class="content has-text-centered">
+      <img src="static/images/exp_main_results.jpg" alt="Main_results_1" width="100%"/>
+      <!-- <p>
+        Evaluation on MiniGPT-4. The word “Typo.” is an abbreviation for typography.
+      </p> -->
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">Main Results on Open-source LVLMs</h2>
+      </div>
+    </div>
+
+    <div class="content has-text-centered">
+      <img src="static/images/exp_open_source_lvlms.svg" alt="Main_results_open_source_lvlms" width="100%"/>
+      <p style="font-weight: bolder;">
+        We can conclude that both base LLMs and cross-modal training methods 
+        play a vital role in LVLMs' safety alignment capability.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">More Experimental Analysis</h2>
+      </div>
+    </div>
+
+    <div class="content has-text-centered">
+      <img src="static/images/exp_vlguard_ablation.svg" alt="exp_vlguard_ablation" width="100%"/>
+      <p style="font-weight: bolder;">
+        Ablation study of VLGuard: (a) LLaVA-v1.5-7B as baseline and (b) LLaVA-v1.5-13B as baseline.
+        The word <q>VLG.</q>is the abbreviation for <q>VLGuard</q>.
+        We can find that LoRA fine-tuning does not reach comparable capability of 
+        safety-related reasonable refusal as full fine-tuning.
+      </p>
+    </div>
+
+    <div class="content has-text-centered">
+      <img src="static/images/exp_temp_topp_ablation.svg" alt="exp_temp_topp_ablation" width="100%"/>
+      <p style="font-weight: bolder;">
+        Ablation study of inference-time parameters of GPT-4o: (a) temperature and (b) top-p.
+        It can be observed that as temperature and top-p decrease, 
+        the model becomes more inclined to generate responses with higher confidence levels, 
+        leading to a higher rejection rate (type T2 and T4) and fewer unsafe responses (type T1).
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">A Baseline for More Reasonable Refusal</h2>
+      </div>
+    </div>
+
+    <div class="content has-text-centered">
+      <img src="static/images/exp_prompt_prefix.svg" alt="exp_prompt_prefix" width="100%"/>
+      <p style="font-weight: bolder;">
+        We add a prompt prefix to each original prompt in LVLM-SafeR, 
+        instructing LVLMs to give more reasonable refusals.
+      </p>
+    </div>
+
+    <div class="content has-text-centered">
+      <img src="static/images/exp_prompt_prefix_result.svg" alt="exp_prompt_prefix_result" width="60%"/>
+      <p style="font-weight: bolder;">
+        Quantitative evaluation results of the designed prompt prefix.
+      </p>
+    </div>
+
+    <div class="content has-text-centered">
+      <img src="static/images/exp_prompt_prefix_two_demo_samples.svg" alt="exp_prompt_prefix_two_demo_samples" width="100%"/>
+      <p style="font-weight: bolder;">
+        Qualitative results of the designed prompt prefix.
+      </p>
+    </div>
+
+    <div class="content has-text-centered">
+      <img src="static/images/appendix_prompt_prefix_openai_1.svg" alt="appendix_prompt_prefix_openai_1" width="100%"/>
+      <p style="font-weight: bolder;">
+        More qualitative results of the designed prompt prefix on GPT-4V (the first two cases).
+      </p>
+    </div>
+
+    <div class="content has-text-centered">
+      <img src="static/images/appendix_prompt_prefix_openai_2.svg" alt="appendix_prompt_prefix_openai_2" width="100%"/>
+      <p style="font-weight: bolder;">
+        More qualitative results of the designed prompt prefix on GPT-4V (the second two cases).
+      </p>
+    </div>
+
+    <div class="content has-text-centered">
+      <img src="static/images/appendix_prompt_prefix_openai_3.svg" alt="appendix_prompt_prefix_openai_3" width="100%"/>
+      <p style="font-weight: bolder;">
+        More qualitative results of the designed prompt prefix on GPT-4V (the third two cases).
+      </p>
+    </div>
+
+    <div class="content has-text-centered">
+      <img src="static/images/appendix_prompt_prefix_claude_1.svg" alt="appendix_prompt_prefix_claude_1" width="100%"/>
+      <p style="font-weight: bolder;">
+        More qualitative results of the designed prompt prefix on Claude-3-Haiku (the first two cases).
+      </p>
+    </div>
+
+    <div class="content has-text-centered">
+      <img src="static/images/appendix_prompt_prefix_claude_2.svg" alt="appendix_prompt_prefix_claude_2" width="100%"/>
+      <p style="font-weight: bolder;">
+        More qualitative results of the designed prompt prefix on Claude-3-Haiku (the second two cases).
+      </p>
+    </div>
+
+    <div class="content has-text-centered">
+      <img src="static/images/appendix_prompt_prefix_claude_3.svg" alt="appendix_prompt_prefix_claude_3" width="100%"/>
+      <p style="font-weight: bolder;">
+        More qualitative results of the designed prompt prefix on Claude-3-Haiku (the third two cases).
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Reference</h2>
+    Please kindly cite our paper if you use our code, data, models or results:
+    <pre><code>@misc{liu2023queryrelevant,
+      title         = {Query-Relevant Images Jailbreak Large Multi-Modal Models}, 
+      author        = {Xin Liu and Yichen Zhu and Yunshi Lan and Chao Yang and Yu Qiao},
+      year          = {2023},
+      eprint        = {2311.17600},
+      archivePrefix = {arXiv},
+      primaryClass  = {cs.CV}
+}</code></pre>
+  </div>
+</section> -->
+
+<footer class="footer">
+  <div class="container">
+    <!-- <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div> -->
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This website is built based on the <a
+            href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> project page.
+            You are free to borrow the <a
+            href="https://github.com/nerfies/nerfies.github.io">source code</a> of this page, we just ask that you link back to this page in the footer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

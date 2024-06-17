@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Query-Relevant Images Jailbreak Large Multi-Modal Models">
+  <meta name="keywords" content="LMM, MLLM, LVLM, Safety, Benchmark">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MM-SafetyBench</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://isXinLiu.github.io">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://isxinliu.github.io/Project/LVLM-SafeR">
+            LVLM-SafeR
+          </a>
+          <!-- <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a> -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">MM-SafetyBench: A Benchmark for Safety Evaluation of Multimodal Large Language Models</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://isxinliu.github.io">Xin Liu</a><sup>1,3,*</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=eyKyrbsAAAAJ&hl=en">Yichen Zhu</a><sup>2,*</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=mj3ff80AAAAJ&hl=en">Jindong Gu</a><sup>4</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=Q0F92XIAAAAJ&hl=en">Yunshi Lan</a><sup>1,†</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=5KRbHPMAAAAJ&hl=zh-CN">Chao Yang</a><sup>3,†</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=gFtI-8QAAAAJ&hl=en">Yu Qiao</a><sup>3</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>East China Normal University,</span>
+            <span class="author-block"><sup>2</sup>Midea Group,</span>
+            <span class="author-block"><sup>3</sup>Shanghai AI Laboratory,</span>
+            <span class="author-block"><sup>4</sup>University of Oxford</span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>*</sup>Contribute equally,</span>
+            <span class="author-block"><sup>†</sup>Corresponding author</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2311.17600"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2311.17600"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/isXinLiu/MM-SafetyBench"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+              </span> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+        <div class="content has-text-centered">
+          <img src="static/images/mm_safety_12.jpg" alt="Evaluation of 12 Large Multi-Modal Models" width="70%"/>
+          <p>
+            Evaluation of 12 Large Multi-Modal Models using our constructed Multi-Modal Safety Benchmark 
+            with proposed visual prompt attacks. 
+            The metric for evaluation is the attack success rate, 
+            where a higher score indicates a greater number of successful attacks against the models.
+          </p>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p style="color: red;">
+            Warning: This page contains examples of harmful language and images, and reader discretion is recommended.
+          </p>
+          <p>
+            The security concerns surrounding Large Language Models (LLMs) have been extensively explored, 
+            yet the safety of Large Multi-Modal Models (LMMs) remains understudied. 
+            In our study, we present a novel visual prompt attack that exploits query-relevant images to jailbreak the open-source LMMs. 
+            Our method creates a composite image from one image generated by diffusion models and another that displays the text as typography, 
+            based on keywords extracted from a malicious query. 
+            We show LLMs can be easily attacked by our approach, 
+            even if the employed Large Language Models are safely aligned. 
+            To evaluate the extent of this vulnerability in open-source LMMs, 
+            we have compiled a substantial dataset encompassing <b>13</b> scenarios with a total of <b>5,040</b> text-image pairs, 
+            using our presented attack technique. 
+            Our evaluation of <b>12</b> cutting-edge LMMs using this dataset shows the vulnerability of existing multi-modal models on adversarial attacks. 
+            This finding underscores the need for a concerted effort to strengthen and 
+            enhance the safety measures of open-source LMMs against potential malicious exploits.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered has-text-centered">
+
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Motivation</h2>
+          <br/><br/>
+          <p>
+            In 3 scenarios, attacking LLaVA-1.5 using query-relevant images obtains 
+            a much higher attack success rate than using query-irrelevant images.
+          </p>
+          <br/><br/>
+          <img src="static/images/mm_safety_motivation.jpg"
+               alt="Motivation"
+               width="100%"
+          />
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-3">Method</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p>
+              For each malicious query, we employ GPT-4 to identify and extract keywords.
+              Subsequently, we utilize Typography and Stable Diffusion techniques to 
+              create two images based on these identified keywords. 
+              These images are then strategically blended, 
+              aiming to deceive large multi-modal models into responding to queries that 
+              are not meant to be answered.
+            </p>
+            <img src="static/images/mm_safety_method.jpg"
+               alt="Method"
+               width="100%"
+            />
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Overview</h2>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-4">Diversity</h2>
+          <p>
+            Diversity of key phrase over 13 scenarios.
+          </p>
+          <br/>
+          <img src="static/images/mm_safety_diversity.jpeg"
+               alt="Diversity"
+               width="100%"
+          />
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-4">Statistics</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p>
+              The statistics of our constructed MM-SafetyBench. 
+              For each question, we generate 3 images correspondingly.
+            </p>
+            <br/><br/>
+            <img src="static/images/mm_safety_statistics.png"
+               alt="Statistics"
+               width="100%"
+            />
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="content has-text-centered">
+      <img src="static/images/mm_safety_whole_scenarios.png" alt="Example of datasets in 12 scenarios" width="100%"/>
+      <p>
+        Example of datasets in 12 scenarios except for pornography.
+        We use <b># Number</b> as an abbreviation to refer to different scenarios.
+        The <b># Number</b> of the pornography scenario is 07.
+      </p>
+    </div>
+
+    <div class="content has-text-centered">
+      <img src="static/images/mm_safety_comparison.png" alt="Comparison with other Multi-Modal benchmarks" width="100%"/>
+      <p>
+        Comparison with other Multi-Modal benchmarks. The symbol * denotes Azure’s GPT-4 API.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Experiment Results</h2>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">Main Results</h2>
+      </div>
+    </div>
+
+    <div class="content has-text-centered">
+      <img src="static/images/mm_safety_experiment_results.png" alt="Experiment Main Results" width="100%"/>
+      <p>
+        Evaluation on LLaVA-1.5-7B and LLaVA-1.5-13B. The word “Typo.” is an abbreviation for typography.
+      </p>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">Ablation Study of SD/Typo in MiniGPT-4</h2>
+      </div>
+    </div>
+
+    <div class="content has-text-centered">
+      <img src="static/images/mm_safety_minigpt4.png" alt="Ablation Study of SD/Typo in MiniGPT-4" width="70%"/>
+      <p>
+        Evaluation on MiniGPT-4. The word “Typo.” is an abbreviation for typography.
+      </p>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">More detailed results of 12 LMMs</h2>
+      </div>
+    </div>
+
+    <div class="content has-text-centered">
+      <img src="static/images/mm_safety_12_detail.jpg" alt="More detailed results of 12 LMMs" width="100%"/>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Quantitative Analysis</h2>
+      </div>
+    </div>
+
+    <div class="content has-text-centered">
+      <img src="static/images/mm_safety_example_01_02.jpg" alt="Examples for scenario 01(left) and 02(right)" width="100%"/>
+      <p>
+        Examples for scenario 01(left) and 02(right).
+      </p>
+    </div>
+
+    <div class="content has-text-centered">
+      <img src="static/images/mm_safety_example_03_04.jpg" alt="Examples for scenario 03(left) and 04(right)" width="100%"/>
+      <p>
+        Examples for scenario 03(left) and 04(right).
+      </p>
+    </div>
+
+    <div class="content has-text-centered">
+      <img src="static/images/mm_safety_example_06_09.jpg" alt="Examples for scenario 06(left) and 09(right)" width="100%"/>
+      <p>
+        Examples for scenario 06(left) and 09(right).
+      </p>
+    </div>
+    
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Reference</h2>
+    Please kindly cite our paper if you use our code, data, models or results:
+    <pre><code>@misc{liu2023queryrelevant,
+      title         = {Query-Relevant Images Jailbreak Large Multi-Modal Models}, 
+      author        = {Xin Liu and Yichen Zhu and Yunshi Lan and Chao Yang and Yu Qiao},
+      year          = {2023},
+      eprint        = {2311.17600},
+      archivePrefix = {arXiv},
+      primaryClass  = {cs.CV}
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <!-- <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div> -->
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This website is built based on the <a
+            href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> project page.
+            You are free to borrow the <a
+            href="https://github.com/nerfies/nerfies.github.io">source code</a> of this page, we just ask that you link back to this page in the footer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
