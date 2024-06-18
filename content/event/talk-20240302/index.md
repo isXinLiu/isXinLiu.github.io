@@ -1,7 +1,7 @@
 ---
 title: Safety of Multimodal Large Language Models on Images and Text
 
-event: 大模型安全与对齐读书会
+event: 大模型安全与对齐读书会 (点击此处了解talk的详细信息)
 event_url: https://mp.weixin.qq.com/s/xkBAkmhs4qGUN7dkRO95Hw
 
 location: Online Talk
