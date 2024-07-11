@@ -25,6 +25,8 @@ featured: true
 links:
 - name: Project Page
   url: 'https://isxinliu.github.io/Project/MM-SafetyBench/'
+- name: ECCV 2024
+  url: ''
 url_pdf: https://arxiv.org/pdf/2311.17600v2
 url_code: 'https://github.com/isXinLiu/MM-SafetyBench'
 tags:

@@ -16,4 +16,8 @@ publication_types:
 - article-journal
 publication: '*Advances in Neural Information Processing Systems*'
 url_pdf: "https://proceedings.neurips.cc/paper_files/paper/2022/file/cf5c369c1bc070361477008e3f5210ed-Paper-Conference.pdf"
+
+links:
+- name: NeurIPS 2022
+  url: ''
 ---
