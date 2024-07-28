@@ -47,6 +47,7 @@ profiles:
   #   url: https://orcid.org/
 
 interests:
+  - Embodied AI
   - Multi-Modal Large Language Model
 
 education:
@@ -87,7 +88,7 @@ work:
     company_url: 'https://www.shlab.org.cn/'
     company_logo: 'https://www.shlab.org.cn/static/img/index_11.1280f447.png'
     date_start: 2023-08-08
-    date_end: ''
+    date_end: 2024-07-31
     summary: |2-
       Responsibilities include:
       - study the safety of Multi-Modal Large Language Models
@@ -177,6 +178,6 @@ languages:
 
 ## About Me
 
-Xin Liu (刘 馨) is a second-year master student at [East China Normal University](https://www.ecnu.edu.cn/). Currently, she works as a research intern in [Shanghai AI Lab](https://www.shlab.org.cn/), with a strong research interest focusing on Multi-Modal Large Language Model.
+Xin Liu (刘 馨) is a second-year master student at [East China Normal University](https://www.ecnu.edu.cn/). Over the past year, her research has focused on Multi-Modal Large Language Model. Two papers were accepted by IJCAI 2024, ECCV 2024 respectively. One paper was submitted to NeurIPS 2024. She acts as the first author of these papers.
 
-***[Highlight] She is looking for PhD to start in 2025 Fall (not limited in China).***
+***[Highlight] She is looking for PhD to start in 2025 Fall (not limited in China), with a strong research interest in Embodied AI.***
