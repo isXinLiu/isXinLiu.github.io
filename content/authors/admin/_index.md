@@ -47,7 +47,6 @@ profiles:
   #   url: https://orcid.org/
 
 interests:
-  - Embodied AI
   - Multi-Modal Large Language Model
 
 education:
@@ -180,4 +179,4 @@ languages:
 
 Xin Liu (刘 馨) is a second-year master student at [East China Normal University](https://www.ecnu.edu.cn/). Over the past year, her research has focused on Multi-Modal Large Language Model. Two papers were accepted by IJCAI 2024, ECCV 2024 respectively. One paper was submitted to NeurIPS 2024. She acts as the first author of these papers.
 
-***[Highlight] She is looking for PhD to start in 2025 Fall (not limited in China), with a strong research interest in Embodied AI.***
+***[Highlight] She is looking for PhD to start in 2025 Fall (not limited in China).***
