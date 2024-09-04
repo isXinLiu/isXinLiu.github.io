@@ -40,7 +40,7 @@ profiles:
   - icon: brands/github
     url: https://github.com/isXinLiu
   # - icon: brands/linkedin
-  #   url: https://www.linkedin.com/
+  #   url: https://www.linkedin.com/in/isxinliu
   # - icon: academicons/google-scholar
   #   url: https://scholar.google.com/
   # - icon: academicons/orcid
@@ -81,16 +81,16 @@ education:
   #     - lorem ipsum dolor sit amet, consectetur adipiscing elit
   #     - lorem ipsum dolor sit amet, consectetur adipiscing elit
   #     - lorem ipsum dolor sit amet, consectetur adipiscing elit
-work:
-  - position: Research Intern
-    company_name: Shanghai AI Lab
-    company_url: 'https://www.shlab.org.cn/'
-    company_logo: 'https://www.shlab.org.cn/static/img/index_11.1280f447.png'
-    date_start: 2023-08-08
-    date_end: 2024-07-31
-    summary: |2-
-      Responsibilities include:
-      - study the safety of Multi-Modal Large Language Models
+# work:
+#   - position: Research Intern
+#     company_name: Shanghai AI Lab
+#     company_url: 'https://www.shlab.org.cn/'
+#     company_logo: 'https://www.shlab.org.cn/static/img/index_11.1280f447.png'
+#     date_start: 2023-08-08
+#     date_end: 2024-07-31
+#     summary: |2-
+#       Responsibilities include:
+#       - study the safety of Multi-Modal Large Language Models
   # - position: Backend Software Engineer
   #   company_name: X
   #   company_url: ''
@@ -137,11 +137,11 @@ work:
 #         percent: 80
 #         icon: camera
 
-languages:
-  - name: English
-    percent: 50
-  - name: Chinese
-    percent: 100
+# languages:
+#   - name: English
+#     percent: 50
+#   - name: Chinese
+#     percent: 100
 
 # Awards.
 #   Add/remove as many awards below as you like.
@@ -177,6 +177,6 @@ languages:
 
 ## About Me
 
-Xin Liu (刘 馨) is a second-year master student at [East China Normal University](https://www.ecnu.edu.cn/). Over the past year, her research has focused on Multi-Modal Large Language Model. Two papers were accepted by IJCAI 2024, ECCV 2024 respectively. One paper was submitted to NeurIPS 2024. She acts as the first author of these papers.
+Xin Liu (刘 馨) is a third-year master student at [East China Normal University](https://www.ecnu.edu.cn/). Over the past year, her research has focused on Multi-Modal Large Language Model. Two papers were accepted by IJCAI 2024, ECCV 2024 respectively. One paper was submitted to NeurIPS 2024. She acts as the first author of these papers.
 
-***[Highlight] She is looking for PhD to start in 2025 Fall (not limited in China).***
+***[Highlight] She is looking for a PhD position to start in 2025 Fall (not limited in China).***

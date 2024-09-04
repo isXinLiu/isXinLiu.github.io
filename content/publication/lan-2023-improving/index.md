@@ -12,9 +12,9 @@ date: '2023-01-01'
 publishDate: '2024-06-16T07:22:55.282885Z'
 publication_types:
 - paper-conference
-publication: '*Proceedings of the 31st ACM International Conference on Multimedia*'
+publication: '*ACM MM*'
 url_pdf: "https://arxiv.org/pdf/2311.09050"
-links:
-- name: ACM MM 2023
-  url: ''
+# links:
+# - name: ACM MM 2023
+#   url: ''
 ---

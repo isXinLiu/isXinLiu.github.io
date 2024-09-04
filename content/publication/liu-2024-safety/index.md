@@ -9,14 +9,14 @@ authors:
 date: '2024-02-01'
 publishDate: '2024-02-01T07:22:55.276756Z'
 publication_types:
-- article-journal
-publication: '*arXiv preprint arXiv:2402.00357*'
+- paper-conference
+publication: '*IJCAI*'
 featured: true
 links:
 - name: Talk
   url: 'https://mp.weixin.qq.com/s/xkBAkmhs4qGUN7dkRO95Hw'
-- name: IJCAI 2024
-  url: ''
+# - name: IJCAI 2024
+#   url: ''
 url_pdf: https://arxiv.org/pdf/2402.00357
 url_code: 'https://github.com/isXinLiu/Awesome-MLLM-Safety'
 tags:

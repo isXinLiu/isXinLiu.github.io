@@ -18,15 +18,15 @@ author_notes:
 date: '2023-11-29'
 publishDate: '2023-11-29T07:30:02.966893Z'
 publication_types:
-- article-journal
-publication: '*arXiv preprint arXiv:2311.17600*'
+- paper-conference
+publication: '*ECCV*'
 
 featured: true
 links:
 - name: Project Page
   url: 'https://isxinliu.github.io/Project/MM-SafetyBench/'
-- name: ECCV 2024
-  url: ''
+# - name: ECCV 2024
+#   url: ''
 url_pdf: https://arxiv.org/pdf/2311.17600v2
 url_code: 'https://github.com/isXinLiu/MM-SafetyBench'
 tags:
